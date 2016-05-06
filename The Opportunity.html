@@ -1,0 +1,176 @@
+<!-- Just a nice html for displaying poems. You can choose different themes by hovering to the top of the browser.
+If you want to add custom themes to the html, update the "theme" in the selection area and the javascript. 
+(See (1) and (2) in the comments) -->
+
+
+
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Link to CSS File -->
+	 <link id = "themeLink" rel="stylesheet" type="text/css" href="theme1.css">
+<!-- For offline use -->
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery-ui.min.js"></script>
+	 <!-- <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css"> -->
+
+<!-- For online use -->
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
+	 <title>The opportunity </title>
+	 
+ </head>
+  
+<body>
+<!-- Navigation Menu -->	
+	<div id="nav">
+		<div id="dropDown">		
+			<label for="theme" >Select a theme</label>
+	    		<select name="theme" id="theme">
+			      <option selected="selected" id = "op1">Theme 1</option>
+			      <option id = "op2">Theme 2</option>
+			      <option id = "op3">Theme 3</option>
+			      <option id = "op4">Theme 4</option>
+<!-- (1) Custom themes update here -->
+	    	</select>
+    	</div>				
+	</div>
+<!-- Main Content -->
+	<div id="main">
+		<p id="title">The Opportunity</p>
+		<p id="author">by Denise Levertov</p>
+		<p class="poem">My father once, after his death,<br />
+		appeared to me as a rose,<br />
+		passed beyond intellect.<br />
+		This time, he resumes<br />
+		human form to become<br />
+		a boy of six.<br />
+		I kneel to hug him,<br />
+		kiss the child's bare shoulders;<br />
+		near us the ocean<br />
+		sighs and murmurs,<br />
+		firm sand reflects <br />
+		the turn of the wave.
+		</p>
+
+		<p class="poem">This is my chance to tell him,<br />
+		'Much has happened, over the years,<br />
+		many travels.<br />
+		In the world,<br />
+		in myself.<br />
+		Along the way,<br />
+		I have come to believe<br />
+		the truth of what you believe.
+		</p>
+		
+		<p class="poem">The child, with good grace,<br />
+		permits <br />
+		my brief embrace; he smiles:<br />
+		the words<br />
+		are lazy waves above and around him,<br />
+		he absorbs their tone,<br />
+		knows he is loved.<br />
+		Knows only that.
+		</p>
+		
+		<p class="poem">This is was my chance<br />
+		to speak, I've taken it,<br />
+		we're both content.
+		</p>
+	</div>
+<!-- Dummy input used to track theme change -->
+	<input  id="themeTrack"  value="">
+
+<!-- Script -->
+	<script type="text/javascript">
+//Update width of navigation bar
+		function updateNavWidth() {
+			var navWidth = $( window ).width();
+		$("#nav").css({"width":navWidth})
+		}
+//Update CSS propterties of the drop-down list to match the page
+		function changeSelectionCSS() {
+
+			var themeBackground = $("body").css("background-color");
+			$("#theme").css("background-color",themeBackground);
+			var themeTextColor = $("#main").css("color");
+			$("#dropDown").css("color",themeTextColor);
+			$("#theme").css("color",themeTextColor);
+		} 
+
+		function changeStyleSheet(a) {
+
+			$('<link id="themeLink">').attr('rel','stylesheet')
+  						.attr('type','text/css')
+  						.attr('href',a)
+  						.appendTo('head');
+		}
+//Initial update
+		updateNavWidth()
+		changeSelectionCSS();
+
+//Show navigation only when user hovers on top 
+		$("#nav").hover(function(){		
+			$("#dropDown").fadeTo(200,1);
+		})
+
+		$("#main").hover(function(){
+			$("#dropDown").hide();
+		})
+
+//Replace style sheet when user wants to change theme 
+		$( "#theme" )
+		  .change(function() {
+
+		    $( "#theme option:selected" ).each(function changeTheme() {
+		      		
+		      		if ($(this).attr('id')=="op1") {
+		      			changeStyleSheet('theme1.css');
+		      			 $("#themeTrack").focus();
+		      		};
+
+		      		if ($(this).attr('id')=="op2") {
+						changeStyleSheet('theme2.css');
+		      			 $("#themeTrack").focus();	
+		  			};
+
+		  			if ($(this).attr('id')=="op3") {
+		      			changeStyleSheet('theme3.css');
+		      			 $("#themeTrack").focus();
+		      		};
+		      		if ($(this).attr('id')=="op4") {
+		      			changeStyleSheet('theme4.css');
+		      			 $("#themeTrack").focus();
+		      		};
+// (2) Custom themes update here
+		    	});
+
+		    });
+
+//Change CSS of navigation menu when style sheet is replaced
+		$( "#themeTrack" )
+		  .on('focus', function() {
+		setTimeout(function(){changeSelectionCSS()},3);
+
+		})
+//Dynamically Update Navigation Menu's width
+
+		$( window ).resize(function() {
+			updateNavWidth();
+		});
+
+
+	</script>
+
+</body>
+
+
+
+</html>

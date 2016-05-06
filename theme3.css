@@ -1,0 +1,92 @@
+/*Theme: Gold on Plum
+*/
+
+/*Skeleton*/
+body {
+	background-color:#283018;
+	background-image: none;
+	}
+		
+	#main {
+		color: #fae596;
+	font: 14px Baskerville, "Palatino Linotype", "Times New Roman", Times, serif;
+	text-align: center;
+
+
+	}
+
+
+	#title {
+		margin-bottom: 0.2em;
+		font-size: 34px;
+		
+	}
+	
+	#author{
+		color: #e6cf8b;
+		font-size: 18px;
+		font-style: italic;
+		margin-bottom: 20px;
+
+	}
+	
+	.poem { 
+	font-size:20px;
+	margin: auto;
+	padding: 20px 0;
+	text-align: left;
+	width: 390px;
+	}
+	.author:before {
+				content: '— ' ;
+				}
+			
+			.author:after {
+				content: ' — ';
+				}
+
+/*Navigation Menu*/
+	#nav {
+		
+		background: rgba(255, 255, 255, 0);
+
+		height: 200px;
+		width: 2000px;
+		position: fixed;
+		top:0;
+		
+	}
+
+	#dropDown {
+	position: absolute;
+    top:   15px;
+    right: 50px;
+    width: 200px;
+    height: 35px;
+    left: auto;
+    z-index: 100;
+    border-radius: 7%;
+    opacity: 0;
+    font-size: 20px;
+	}
+
+	label {
+      display: block;
+      margin: 0 0 10px 0;    
+    }
+
+    #theme {
+      width: 200px;
+      font-size: 20px;
+  	}
+
+/*Dummy input*/
+  	#themeTrack {
+  		opacity: 0;
+  		width: 1px;
+  		height: 1px;
+  		bottom:0;
+  		position: absolute;
+
+  	}
+
